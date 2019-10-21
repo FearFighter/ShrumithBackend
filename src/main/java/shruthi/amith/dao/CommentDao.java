@@ -1,6 +1,6 @@
-package main.shruthi.amith.dao;
+package shruthi.amith.dao;
 
-import model.Comment;
+import shruthi.amith.model.Comment;
 
 import java.util.List;
 

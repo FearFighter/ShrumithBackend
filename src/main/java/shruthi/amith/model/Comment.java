@@ -1,36 +1,35 @@
-package model;
+package shruthi.amith.model;
 
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="comment")
-public class Comment {
+@Table(name="COMMENT")
+public class Comment{
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public Integer id;
+    Integer id;
 
     @Column(name="name")
-    public String name;
+    String name;
 
     @Column(name="description")
-    public String description;
+    String description;
 
     @Column(name="created_at")
-    public String createdAt = new DateTime().toString();
+    String createdAt = new DateTime().toString();
 
     public Comment() {
         super();
     }
 
-    public Comment(Integer id, String name, String description, String createdAt) {
-        this.id = id;
+    public Comment(String name, String description) {
+        super();
         this.name = name;
         this.description = description;
-        this.createdAt = createdAt;
     }
 
     public Integer getId() {

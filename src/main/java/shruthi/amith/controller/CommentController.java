@@ -1,7 +1,7 @@
-package main.shruthi.amith.controller;
+package shruthi.amith.controller;
 
-import main.shruthi.amith.service.CommentService;
-import model.Comment;
+import shruthi.amith.service.CommentService;
+import shruthi.amith.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +27,9 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/comments", method = RequestMethod.POST, headers = "Accept=application/json")
-    public void addComment(@ModelAttribute("comment") Comment comment){
-
-        if(comment.getName() == null) {
+    public void addComment(@RequestBody Comment comment){
+        Comment existingComment = commentService.getCommentByName(comment.getName());
+        if(existingComment == null) {
             commentService.addComment(comment);
         } else {
             commentService.updateComment(comment);
