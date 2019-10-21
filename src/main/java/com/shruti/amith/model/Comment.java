@@ -1,11 +1,11 @@
-package shruthi.amith.model;
+package com.shruti.amith.model;
 
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="COMMENT")
+@Table(name="comment")
 public class Comment{
 
     @Id
@@ -16,7 +16,10 @@ public class Comment{
     @Column(name="name")
     String name;
 
-    @Column(name="description")
+    @Column(name="subject")
+    String subject;
+
+    @Column(name="description", columnDefinition = "TEXT")
     String description;
 
     @Column(name="created_at")
@@ -26,9 +29,9 @@ public class Comment{
         super();
     }
 
-    public Comment(String name, String description) {
-        super();
+    public Comment(String name, String subject, String description) {
         this.name = name;
+        this.subject = subject;
         this.description = description;
     }
 
@@ -62,5 +65,13 @@ public class Comment{
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

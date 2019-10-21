@@ -1,4 +1,4 @@
-package shruthi.amith;
+package com.shruti.amith;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 @SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
 public class ShrumithBackendApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShrumithBackendApplication.class,args);
+    public static void main(String[] args)
+    {
+        SpringApplication.run(ShrumithBackendApplication.class, args);
     }
 }

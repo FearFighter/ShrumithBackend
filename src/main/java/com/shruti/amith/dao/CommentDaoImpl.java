@@ -1,6 +1,6 @@
-package shruthi.amith.dao;
+package com.shruti.amith.dao;
 
-import shruthi.amith.model.Comment;
+import com.shruti.amith.model.Comment;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +23,7 @@ public class CommentDaoImpl implements CommentDao{
 	@Override
 	public List<Comment> getAllComments() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Comment>  comments = session.createQuery("from COMMENT").list();
+		List<Comment>  comments = session.createQuery("from Comment").list();
 		return comments;
 	}
 
@@ -37,7 +37,7 @@ public class CommentDaoImpl implements CommentDao{
 	@Override
 	public Comment getCommentByName(String name) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query<Comment> query = session.createQuery("SELECT c FROM Comment c where c.name=:name", Comment.class);
+		Query<Comment> query = session.createQuery("from Comment c where c.name=:name", Comment.class);
 		query.setParameter("name", name);
 		return query.uniqueResult();
 	}

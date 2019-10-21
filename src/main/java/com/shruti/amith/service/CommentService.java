@@ -1,7 +1,7 @@
-package shruthi.amith.service;
+package com.shruti.amith.service;
 
-import shruthi.amith.dao.CommentDao;
-import shruthi.amith.model.Comment;
+import com.shruti.amith.dao.CommentDao;
+import com.shruti.amith.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

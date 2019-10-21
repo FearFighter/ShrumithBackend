@@ -1,7 +1,7 @@
-package shruthi.amith.controller;
+package com.shruti.amith.controller;
 
-import shruthi.amith.service.CommentService;
-import shruthi.amith.model.Comment;
+import com.shruti.amith.service.CommentService;
+import com.shruti.amith.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
