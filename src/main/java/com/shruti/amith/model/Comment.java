@@ -1,6 +1,8 @@
 package com.shruti.amith.model;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import javax.persistence.*;
 
@@ -23,7 +25,7 @@ public class Comment{
     String description;
 
     @Column(name="created_at")
-    String createdAt = new DateTime().toString();
+    String createdAt = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss").print(new DateTime());
 
     public Comment() {
         super();
