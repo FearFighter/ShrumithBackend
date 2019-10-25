@@ -31,6 +31,9 @@ public class CommentController {
 
     @RequestMapping(value = "/comments", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> addComment(@RequestBody Comment comment){
+        System.out.println("Comment Request: Name: " + comment.getName());
+        System.out.println("Comment Request: Subject: " + comment.getSubject());
+        System.out.println("Comment Request: Description: " + comment.getDescription());
 
         if(!CommentValidation.validateRequest(comment)){
             return ResponseEntity.badRequest().header("Content-Type","application/text").body("Mandatory data missing");
