@@ -2,6 +2,7 @@ package com.shruti.amith.controller;
 
 import com.shruti.amith.service.CommentService;
 import com.shruti.amith.model.Comment;
+import com.shruti.amith.validation.CommentValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,10 @@ public class CommentController {
 
     @RequestMapping(value = "/comments", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> addComment(@RequestBody Comment comment){
+
+        if(!CommentValidation.validateRequest(comment)){
+            return ResponseEntity.badRequest().header("Content-Type","application/text").body("Mandatory data missing");
+        }
         Comment existingComment = commentService.getCommentByName(comment.getName());
         if(existingComment == null) {
             commentService.addComment(comment);
