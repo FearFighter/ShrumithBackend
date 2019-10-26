@@ -25,7 +25,10 @@ public class Comment{
     String description;
 
     @Column(name="created_at")
-    String createdAt = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm:ss").print(new DateTime());
+    String createdAt = DateTimeFormat.forPattern("yyyy MMM dd").print(new DateTime());
+
+    @Column(name="updated_at")
+    String updatedAt;
 
     public Comment() {
         super();
@@ -75,5 +78,13 @@ public class Comment{
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

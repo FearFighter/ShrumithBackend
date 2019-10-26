@@ -44,7 +44,7 @@ public class CommentController {
         if(existingComment == null) {
             commentService.addComment(comment);
         } else {
-            commentService.updateComment(comment);
+            commentService.updateComment(existingComment, comment);
         }
         return ResponseEntity.ok().header("Content-Type","application/json").body(new Gson().toJson("Comment added successfully"));
     }
