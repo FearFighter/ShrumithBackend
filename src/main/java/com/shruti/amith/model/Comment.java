@@ -25,7 +25,7 @@ public class Comment{
     String description;
 
     @Column(name="created_at")
-    String createdAt = DateTimeFormat.forPattern("yyyy MMM dd").print(new DateTime());
+    String createdAt = DateTimeFormat.forPattern("yyyy MMM dd hh:mm:ss").print(new DateTime());
 
     @Column(name="updated_at")
     String updatedAt;

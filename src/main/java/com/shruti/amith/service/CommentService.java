@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -18,7 +19,10 @@ public class CommentService {
 
     @Transactional
     public List<Comment> getAllComments() {
-        return commentDao.getAllComments();
+
+        List<Comment> comments = commentDao.getAllComments();
+        comments.sort(Comparator.comparing(o -> o.getUpdatedAt()));
+        return comments.size() > 6 ? comments.subList(comments.size() - 6, comments.size()) : comments;
     }
 
     @Transactional
@@ -33,13 +37,13 @@ public class CommentService {
 
     @Transactional
     public void addComment(Comment comment) {
-        comment.setUpdatedAt(DateTimeFormat.forPattern("yyyy MMM dd").print(new DateTime()));
+        comment.setUpdatedAt(DateTimeFormat.forPattern("yyyy MMM dd hh:mm:ss").print(new DateTime()));
         commentDao.addComment(comment);
     }
 
     @Transactional
     public void updateComment(Comment existingComment, Comment comment) {
-        existingComment.setUpdatedAt(DateTimeFormat.forPattern("yyyy MMM dd").print(new DateTime()));
+        existingComment.setUpdatedAt(DateTimeFormat.forPattern("yyyy MMM dd hh:mm:ss").print(new DateTime()));
         existingComment.setSubject(comment.getSubject());
         existingComment.setDescription(comment.getDescription());
         commentDao.updateComment(existingComment);
