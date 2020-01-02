@@ -37,6 +37,9 @@ public class CommentService {
 
     @Transactional
     public void addComment(Comment comment) {
+        if(comment.getName().isEmpty()){
+            comment.setName("Anonymous");
+        }
         comment.setUpdatedAt(DateTimeFormat.forPattern("yyyy MMM dd hh:mm:ss").print(new DateTime()));
         commentDao.addComment(comment);
     }
