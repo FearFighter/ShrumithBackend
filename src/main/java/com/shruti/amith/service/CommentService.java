@@ -22,7 +22,8 @@ public class CommentService {
 
         List<Comment> comments = commentDao.getAllComments();
         comments.sort(Comparator.comparing(o -> o.getUpdatedAt()));
-        return comments.size() > 6 ? comments.subList(comments.size() - 6, comments.size()) : comments;
+        return comments;
+//        return comments.size() > 6 ? comments.subList(comments.size() - 6, comments.size()) : comments;
     }
 
     @Transactional
